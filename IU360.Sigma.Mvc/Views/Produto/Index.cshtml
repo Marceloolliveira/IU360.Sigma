@@ -1,0 +1,66 @@
+﻿@model List<IU360.Sigma.Mvc.Models.ProdutoViewModel>
+
+@{
+    ViewData["Title"] = "Product Datails";
+    var succesMessage = TempData["succesMessage"]?.ToString();
+    var errormessage = TempData["errormessage"]?.ToString();
+
+}
+<h3>@ViewData["Title"]</h3>
+<hr/>
+@if (!string.IsNullOrWhiteSpace(succesMessage))
+{
+    <div></div>
+}
+<form>
+    <button asp-action="Create" asp-controller="Produto" class="btn btn-primary mb-3"> Create Product</button>
+    <table class="table table-responsive table-hover table-bordered">
+        <thead>
+            <tr class="table-active">
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Created Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(Model != null && Model.Any())
+            {
+                @foreach(var produto in Model)
+                {
+                    <tr>
+                        <td>@produto.Id</td>
+                        <td>@produto.Name</td>
+                        <td>@produto.Description</td>
+                        <td>@produto.Price</td>
+                        <td>@produto.Quantity</td>
+                        <td>@produto.CreatedDate</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <a asp-controller="Produto" asp-action="Edit" asp-route-id="@produto.Id" class="btn
+                                    btn-primary">Edit</a>
+                                <a asp-controller="Produto" asp-action="Delete" asp-route-id="@produto.Id" class="btn
+                                    btn-danger">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+            }
+            else
+            {
+                <tr>
+                    <td colspan="7">
+                        <div>
+                            No Products available at this moment!
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>
+
