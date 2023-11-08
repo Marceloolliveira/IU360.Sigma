@@ -15,9 +15,12 @@ namespace IU360.Sigma.Mvc.Models
         public string Description { get; set; }
 
         [DisplayName("Price")]
+        [Range(1, int.MaxValue, ErrorMessage ="Only positive number allowed")]
         public float Price { get; set; }
 
         [DisplayName("Quantity")]
+        [Range(1, int.MaxValue, ErrorMessage = "Only positive number allowed")]
+
         public int Quantity { get; set; }
 
         [DisplayName("Created Date")]

@@ -1,0 +1,48 @@
+﻿@model IU360.Sigma.Mvc.Models.ProdutoViewModel
+
+@{
+    ViewData["Title"] = "Edit Produto";
+    var errormessage = TempData["errormessage"]?.ToString();
+}
+<h3>@ViewData["Title"]</h3>
+<hr />
+@if (!string.IsNullOrWhiteSpace(errormessage))
+{
+    <div class="alert alert-danger">
+        <strong>Error! </strong>@errormessage
+        <button type="button" class="btn btn-close floar-end" data-bs-dismiss="alert" arial-label="Close"></button>
+    </div>
+}
+<form action="Delete" method="post">
+    <div class="mb-3">
+        <label class="form-label">Id</label>
+        <input type="text" class="form-control" asp-for="Id" readonly />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-control" asp-for="Name" readonly />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Descripton</label>
+        <input type="text" class="form-control" asp-for="Description" readonly />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Price</label>
+        <div class="input-group">
+            <span class="input-group">R$</span>
+            <input type="text" class="form-control" asp-for="Price" readonly />
+        </div>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Quantity</label>
+        <input type="text" class="form-control" asp-for="Quantity" readonly />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Created Date</label>
+        <input type="text" class="form-control" asp-for="CreatedDate" readonly />
+    </div>
+    <div class="d-gride">
+        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete the product?')">Delete</button>
+    </div>
+</form>
+
