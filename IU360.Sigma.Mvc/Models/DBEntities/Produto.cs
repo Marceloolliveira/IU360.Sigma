@@ -14,5 +14,6 @@ namespace IU360.Sigma.Mvc.Models.DBEntities
         public float Price { get; set; }
         public int Quantity { get; set; }
         public DateTime? CreatedDate { get; set; }
+        
     }
 }
